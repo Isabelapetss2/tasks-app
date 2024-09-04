@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
 function App() {
-  const [tasks,setTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks") ||[])
-  );
+  const [tasks, setTasks] = useState(() => {
+    try {
+      const savedTasks = localStorage.getItem("tasks");
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    } catch (error) {
+      console.error("Failed to parse tasks from localStorage:", error);
+      return [];
+    }
+  });
 
 function onTaskClick(taskId) {
   const newTasks = tasks.map((task => {
