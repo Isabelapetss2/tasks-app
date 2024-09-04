@@ -39,20 +39,21 @@ useEffect(() => {
   localStorage.setItem("tasks",JSON.stringify(tasks))
 })
 //só vai ser executado uma vez pq a lista ta vazia
-useEffect(() =>{
-  //o use effect não aceita função assicrona diretamente então se for usar o fetch do js coloque uma função assicrona dentro
-  async function fetchTasks() {
+
+// useEffect(() =>{
+//   //o use effect não aceita função assicrona diretamente então se for usar o fetch do js coloque uma função assicrona dentro
+//   async function fetchTasks() {
     
-    //conecta e chama no maximo 18 dados da api fake
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10',{
-      method:'GET'
-    });
-    const data = await response.json();
-    setTasks(data);// vou armazenar no localSTorage
-  }
-  fetchTasks();
-},[]
-);
+//     //conecta e chama no maximo 18 dados da api fake
+//     const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10',{
+//       method:'GET'
+//     });
+//     const data = await response.json();
+//     setTasks(data);// vou armazenar no localSTorage
+//   }
+//   // fetchTasks();
+// },[]
+// );
 
   return (
     <div className="w-screen h-screen bg-slate-500 p-6 flex justify-center">
